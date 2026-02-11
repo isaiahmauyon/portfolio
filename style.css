@@ -1025,6 +1025,7 @@ hero-texts-name {
 }
 
 /* Footer Section */
+/* Footer Section */
 .footer-section {
   width: 100%;
   background-color: #000000;
@@ -1063,6 +1064,7 @@ hero-texts-name {
   font-weight: 600;
   margin: 0 0 24px 0;
   color: #ffffff;
+  font-style: italic;
 }
 
 .footer-main-pages {
@@ -1103,6 +1105,18 @@ hero-texts-name {
   transition: color 0.3s;
 }
 
+.pages-column a::after {
+  content: "→";
+  opacity: 0.6;
+  margin-left: 12px;
+  transition: all 0.3s ease;
+}
+
+.pages-column a:hover::after {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
 .arrow {
   opacity: 0.6;
   margin-left: 12px;
@@ -1115,7 +1129,13 @@ hero-texts-name {
 }
 
 .footer-column li {
-  margin-bottom: 14px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #333333;
+  padding: 14px 0;
+}
+
+.footer-column li:last-child {
+  border-bottom: none;
 }
 
 .footer-column a {
@@ -1123,16 +1143,32 @@ hero-texts-name {
   text-decoration: none;
   font-size: 14px;
   transition: color 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-column a::after {
+  content: "→";
+  opacity: 0.6;
+  margin-left: 12px;
+  transition: all 0.3s ease;
 }
 
 .footer-column a:hover {
   color: #ffffff;
 }
 
+.footer-column a:hover::after {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
 .footer-column p {
   color: #b3b3b3;
   font-size: 14px;
   margin: 8px 0;
+  line-height: 1.6;
 }
 
 .footer-bottom {
@@ -1141,6 +1177,14 @@ hero-texts-name {
   text-align: center;
   color: #666666;
   font-size: 12px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-bottom strong {
+  color: #ffffff;
 }
 
 /* About Page Styles */
@@ -1890,7 +1934,6 @@ hero-texts-name {
     padding: 16px;
     position: relative;
     background-color: #000000;
-    border: 2px dashed #4a90e2;
     margin: 0;
   }
 
@@ -2388,16 +2431,6 @@ hero-texts-name {
   .cta-banner-text {
     font-size: 28px;
     gap: 16px;
-    animation: scroll 20s linear infinite;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
   }
 
   /* Footer Section */
@@ -2492,7 +2525,10 @@ hero-texts-name {
   }
 }
 
-/* RESPONSIVE CSS FOR ABOUT PAGE */
+/* ===================================
+   RESPONSIVE CSS FOR ABOUT PAGE
+   Add this to your about.css file
+   =================================== */
 
 /* Tablet and Mobile Devices */
 @media (max-width: 1024px) {
@@ -2554,7 +2590,7 @@ hero-texts-name {
   }
 }
 
-/* Mobile Devices */
+/* Mobile Devices (390px width as shown in screenshots) */
 @media (max-width: 768px) {
   /* About Hero Section */
   .about-hero-section {
@@ -2562,20 +2598,49 @@ hero-texts-name {
     padding-bottom: 40px;
   }
 
-  .header-section {
+  .about-hero-section .header-section {
     padding: 16px;
     background-color: #000000;
   }
 
-  .logo-text h2 {
+  .about-hero-section .logo-and-review-section {
+    position: relative;
+  }
+
+  /* Hide the original logo and reviews on mobile */
+  .about-hero-section .logo-and-review-section > img,
+  .about-hero-section .logo-and-review-section > .logo-text {
+    display: none;
+  }
+
+  /* Show text logo using pseudo-elements */
+  .about-hero-section .logo-and-review-section::before {
+    content: "ETHAN";
+    position: relative;
+    top: 0;
+    left: 0;
     font-size: 14px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    display: block;
+    line-height: 1.2;
   }
 
-  .logo-text p {
+  .about-hero-section .logo-and-review-section::after {
+    content: "PORTFOLIO";
+    position: relative;
+    top: 0;
+    left: 0;
     font-size: 8px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 2px;
+    display: block;
+    line-height: 1;
   }
 
-  .reviews {
+  .about-hero-section .reviews {
     display: none;
   }
 
@@ -2634,13 +2699,7 @@ hero-texts-name {
 
   .creative-mind-image {
     width: 100%;
-    border: 3px solid #4a90e2;
-    border-radius: 8px;
     padding: 3px;
-  }
-
-  .creative-mind-image img {
-    border-radius: 4px;
   }
 
   .creative-mind-text {
@@ -2919,16 +2978,6 @@ hero-texts-name {
   .cta-banner-text {
     font-size: 28px;
     gap: 16px;
-    animation: scroll 20s linear infinite;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
   }
 
   /* Footer Section */
@@ -3042,24 +3091,5 @@ hero-texts-name {
 
   .tool-item p {
     font-size: 14px;
-  }
-}
-
-/* Landscape Mobile Orientation */
-@media (max-width: 768px) and (orientation: landscape) {
-  .about-hero-section {
-    min-height: 250px;
-  }
-
-  .about-hero-title {
-    font-size: 48px;
-  }
-
-  .journey-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .stack-tools {
-    grid-template-columns: repeat(4, 1fr);
   }
 }
