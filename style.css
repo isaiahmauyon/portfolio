@@ -2590,7 +2590,7 @@ hero-texts-name {
   }
 }
 
-/* Mobile Devices (390px width as shown in screenshots) */
+/* Mobile Devices */
 @media (max-width: 768px) {
   /* About Hero Section */
   .about-hero-section {
